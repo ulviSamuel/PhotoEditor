@@ -3,17 +3,12 @@ package it.volta.ts.pcto.testphotoeditor;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
@@ -83,7 +78,7 @@ public class MainActivity extends Activity
     private void configPhotoEditor()
     {
         PhotoEditorView mPhotoEditorView = findViewById(R.id.photoEditorView);
-        mPhotoEditorView.getSource().setImageResource(R.drawable.img);
+        mPhotoEditorView.getSource().setImageResource(R.drawable.img_test_icon);
         Typeface mTextRobotoTf = ResourcesCompat.getFont(this, R.font.roboto_medium);
         mPhotoEditor = new PhotoEditor.Builder(this, mPhotoEditorView)
                                                   .setPinchTextScalable(true)
