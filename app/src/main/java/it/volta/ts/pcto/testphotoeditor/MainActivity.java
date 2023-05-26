@@ -21,6 +21,7 @@ import androidx.core.content.res.ResourcesCompat;
 import com.otaliastudios.zoom.ZoomLayout;
 
 import ja.burhanrashid52.photoeditor.OnPhotoEditorListener;
+import ja.burhanrashid52.photoeditor.OnSaveBitmap;
 import ja.burhanrashid52.photoeditor.PhotoEditor;
 import ja.burhanrashid52.photoeditor.PhotoEditorView;
 import ja.burhanrashid52.photoeditor.ViewType;
@@ -202,7 +203,17 @@ public class MainActivity extends Activity
 
     private void onCheckBtnClick()
     {
-        Toast.makeText(this, "Check", Toast.LENGTH_SHORT).show();
+        PhotoEditorView mPhotoEditorView = findViewById(R.id.photoEditorView);
+        mPhotoEditor.saveAsBitmap(new OnSaveBitmap()
+        {
+            @Override
+            public void onBitmapReady(@Nullable Bitmap bitmap)
+            {
+                //"bitmap" è l'immagine modificata"
+            }
+            @Override
+            public void onFailure(@Nullable Exception e) {}
+        });
     }
 
     //---------------------------------------------------------------------------------------------
