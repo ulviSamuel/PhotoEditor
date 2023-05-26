@@ -1,107 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageButton
+        android:id="@+id/zoomBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/zoom"
+        android:src="@drawable/zoom_icon"
+        app:layout_constraintBottom_toTopOf="@+id/pencilBtn"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/zoomBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/zoom_icon" />
-
-        <ImageButton
-            android:id="@+id/pencilBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/office_material" />
-
-        <ImageButton
-            android:id="@+id/eraserBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/eraser" />
-
-        <ImageButton
-            android:id="@+id/insTextBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/text" />
-
-        <ImageButton
-            android:id="@+id/undoBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/undo" />
-
-        <ImageButton
-            android:id="@+id/redoBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/redo" />
-
-        <ImageButton
-            android:id="@+id/deleteBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bin" />
-    </LinearLayout>
-
-    <!--<com.otaliastudios.zoom.ZoomLayout
-        android:id="@+id/zoomLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical|horizontal"
-        app:alignment="center"
-        app:animationDuration="280"
-        app:flingEnabled="true"
-        app:hasClickableChildren="false"
-        app:horizontalPanEnabled="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:maxZoom="2.5"
-        app:maxZoomType="zoom"
-        app:minZoom="0.7"
-        app:minZoomType="zoom"
-        app:oneFingerScrollEnabled="true"
-        app:overPinchable="true"
-        app:overScrollHorizontal="true"
-        app:overScrollVertical="true"
-        app:scrollEnabled="true"
-        app:threeFingersScrollEnabled="true"
-        app:transformation="centerInside"
-        app:transformationGravity="auto"
-        app:twoFingersScrollEnabled="true"
-        app:verticalPanEnabled="true"
-        app:zoomEnabled="true">
+        tools:ignore="SpeakableTextPresentCheck" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/pencilBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/pencil"
+        android:src="@drawable/office_material"
+        app:layout_constraintBottom_toTopOf="@+id/eraserBtn"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zoomBtn" />
 
-            <ja.burhanrashid52.photoeditor.PhotoEditorView
-                android:id="@+id/photoEditorView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+    <ImageButton
+        android:id="@+id/eraserBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/eraser"
+        android:src="@drawable/eraser"
+        app:layout_constraintBottom_toTopOf="@+id/insTextBtn"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pencilBtn" />
 
-    </com.otaliastudios.zoom.ZoomLayout>-->
+    <ImageButton
+        android:id="@+id/insTextBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/textIns"
+        android:src="@drawable/text"
+        app:layout_constraintBottom_toTopOf="@+id/undoBtn"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eraserBtn" />
+
+    <ImageButton
+        android:id="@+id/undoBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/undo"
+        android:src="@drawable/undo"
+        app:layout_constraintBottom_toTopOf="@+id/redoBtn"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/insTextBtn" />
+
+    <ImageButton
+        android:id="@+id/redoBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/redo"
+        android:src="@drawable/redo"
+        app:layout_constraintBottom_toTopOf="@+id/deleteBtn"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/undoBtn" />
+
+    <ImageButton
+        android:id="@+id/deleteBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/delete"
+        android:src="@drawable/bin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/redoBtn" />
 
     <com.otaliastudios.zoom.ZoomLayout
         android:id="@+id/zoomLayout"
@@ -115,8 +117,10 @@
         app:horizontalPanEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/guidelineStart"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:maxZoom="2.5"
         app:maxZoomType="zoom"
         app:minZoom="0.7"
@@ -145,5 +149,45 @@
         </LinearLayout>
 
     </com.otaliastudios.zoom.ZoomLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.93" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.075" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <ImageButton
+        android:id="@+id/checkBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/check_icon"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd2"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintTop_toTopOf="@id/horizontalGuideLine"
+        style="ro"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
@@ -53,6 +54,7 @@ public class MainActivity extends Activity
         configDesignBar();
         configPhotoEditor();
         configZoomLayout();
+        configureCheckButton();
     }
 
     //---------------------------------------------------------------------------------------------
@@ -96,6 +98,14 @@ public class MainActivity extends Activity
     {
         ZoomLayout zoomLayout = findViewById(R.id.zoomLayout);
         disableZoomLayout();
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void configureCheckButton()
+    {
+        ImageButton imgButton = findViewById(R.id.checkBtn);
+        imgButton.setOnClickListener(e -> onCheckBtnClick());
     }
 
     //---------------------------------------------------------------------------------------------
@@ -186,6 +196,13 @@ public class MainActivity extends Activity
         zoomLayout.setZoomEnabled(true);
         zoomLayout.setHorizontalPanEnabled(true);
         zoomLayout.setVerticalPanEnabled(true);
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void onCheckBtnClick()
+    {
+        Toast.makeText(this, "Check", Toast.LENGTH_SHORT).show();
     }
 
     //---------------------------------------------------------------------------------------------
