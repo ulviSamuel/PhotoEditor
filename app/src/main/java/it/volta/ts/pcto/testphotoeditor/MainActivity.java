@@ -31,7 +31,7 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.zoom_image);
+        setContentView(R.layout.new_layout);
         initVariables();
         initView();
     }
@@ -50,7 +50,7 @@ public class MainActivity extends Activity
         configDesignBar();
         configPhotoEditor();
         configZoomLayout();
-        configureCheckButton();
+        //configureCheckButton();
     }
 
     //---------------------------------------------------------------------------------------------
