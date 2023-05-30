@@ -30,7 +30,7 @@
             android:id="@+id/zoomBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/zoom_icon" />
+            android:src="@drawable/zoom_icon24" />
 
         <ImageButton
             android:id="@+id/pencilBtn"

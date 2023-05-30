@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/zoom"
-        android:src="@drawable/zoom_icon"
+        android:src="@drawable/zoom_icon24"
         app:layout_constraintBottom_toTopOf="@+id/pencilBtn"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
