@@ -23,7 +23,13 @@ import ja.burhanrashid52.photoeditor.ViewType;
 
 public class MainActivity extends Activity
 {
-    private PhotoEditor mPhotoEditor;
+    private PhotoEditor     mPhotoEditor;
+    private PhotoEditorView mPhotoEditorView;
+    private ZoomLayout      zoomLayout;
+    private View            selectZoomLine;
+    private View            selectPencilLine;
+    private View            selectEraserLine;
+    private View            selectInsTextLine;
 
     //---------------------------------------------------------------------------------------------
 
@@ -71,13 +77,18 @@ public class MainActivity extends Activity
         imgButton.setOnClickListener(e -> onInsTextBtnClick());
         imgButton = findViewById(R.id.zoomBtn);
         imgButton.setOnClickListener(e -> onZoomBtnClick());
+        selectZoomLine = findViewById(R.id.select_line_zoom);
+        selectZoomLine.setVisibility(View.VISIBLE);
+        selectPencilLine  = findViewById(R.id.select_line_pencil);
+        selectEraserLine  = findViewById(R.id.select_line_eraser);
+        selectInsTextLine = findViewById(R.id.select_line_ins_text);
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void configPhotoEditor()
     {
-        PhotoEditorView mPhotoEditorView = findViewById(R.id.photoEditorView);
+        mPhotoEditorView = findViewById(R.id.photoEditorView);
         mPhotoEditorView.getSource().setImageResource(R.drawable.img_test_icon);
         Typeface mTextRobotoTf = ResourcesCompat.getFont(this, R.font.roboto_medium);
         mPhotoEditor = new PhotoEditor.Builder(this, mPhotoEditorView)
@@ -92,8 +103,17 @@ public class MainActivity extends Activity
 
     private void configZoomLayout()
     {
-        ZoomLayout zoomLayout = findViewById(R.id.zoomLayout);
-        disableZoomLayout();
+        zoomLayout = findViewById(R.id.zoomLayout);
+        activeZoomLayout();
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void activeZoomLayout()
+    {
+        zoomLayout.setZoomEnabled(true);
+        zoomLayout.setHorizontalPanEnabled(true);
+        zoomLayout.setVerticalPanEnabled(true);
     }
 
     //---------------------------------------------------------------------------------------------
@@ -108,7 +128,6 @@ public class MainActivity extends Activity
 
     private void disableZoomLayout()
     {
-        ZoomLayout zoomLayout = findViewById(R.id.zoomLayout);
         zoomLayout.setZoomEnabled(false);
         zoomLayout.setHorizontalPanEnabled(false);
         zoomLayout.setVerticalPanEnabled(false);
@@ -144,6 +163,10 @@ public class MainActivity extends Activity
     {
         disableZoomLayout();
         mPhotoEditor.setBrushDrawingMode(true);
+        selectZoomLine.setVisibility(View.INVISIBLE);
+        selectEraserLine.setVisibility(View.INVISIBLE);
+        selectInsTextLine.setVisibility(View.INVISIBLE);
+        selectPencilLine.setVisibility(View.VISIBLE);
     }
 
     //---------------------------------------------------------------------------------------------
@@ -152,6 +175,10 @@ public class MainActivity extends Activity
     {
         disableZoomLayout();
         mPhotoEditor.brushEraser();
+        selectZoomLine.setVisibility(View.INVISIBLE);
+        selectPencilLine.setVisibility(View.INVISIBLE);
+        selectInsTextLine.setVisibility(View.INVISIBLE);
+        selectEraserLine.setVisibility(View.VISIBLE);
     }
 
     //---------------------------------------------------------------------------------------------
@@ -181,6 +208,10 @@ public class MainActivity extends Activity
     {
         disableZoomLayout();
         mPhotoEditor.addText("Enter Text", R.color.black);
+        selectZoomLine.setVisibility(View.INVISIBLE);
+        selectPencilLine.setVisibility(View.INVISIBLE);
+        selectEraserLine.setVisibility(View.INVISIBLE);
+        selectInsTextLine.setVisibility(View.VISIBLE);
     }
 
     //---------------------------------------------------------------------------------------------
@@ -188,17 +219,17 @@ public class MainActivity extends Activity
     private void onZoomBtnClick()
     {
         mPhotoEditor.setBrushDrawingMode(false);
-        ZoomLayout zoomLayout = findViewById(R.id.zoomLayout);
-        zoomLayout.setZoomEnabled(true);
-        zoomLayout.setHorizontalPanEnabled(true);
-        zoomLayout.setVerticalPanEnabled(true);
+        activeZoomLayout();
+        selectPencilLine.setVisibility(View.INVISIBLE);
+        selectEraserLine.setVisibility(View.INVISIBLE);
+        selectInsTextLine.setVisibility(View.INVISIBLE);
+        selectZoomLine.setVisibility(View.VISIBLE);
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void onCheckBtnClick()
     {
-        PhotoEditorView mPhotoEditorView = findViewById(R.id.photoEditorView);
         mPhotoEditor.saveAsBitmap(new OnSaveBitmap()
         {
             @Override
