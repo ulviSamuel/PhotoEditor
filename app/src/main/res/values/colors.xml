@@ -11,4 +11,5 @@
     <color name="design_frame_background">#2252CD</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="grey_line">#E0E4E9</color>
+    <color name="select_line_color">#2252CD</color>
 </resources>
