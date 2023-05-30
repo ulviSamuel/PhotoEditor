@@ -33,6 +33,8 @@ public class MainActivity extends Activity
     private View            selectEraserLine;
     private View            selectInsTextLine;
     private View            colorMenu;
+    private View            pencilRectangle;
+    private View            insTextRectangle;
     private ImageButton     blackBtn;
     private ImageButton     whiteBtn;
     private ImageButton     skyBlueBtn;
@@ -104,8 +106,10 @@ public class MainActivity extends Activity
 
     private void initColorMenu()
     {
-        colorMenu = findViewById(R.id.color_menu);
-        blackBtn  = findViewById(R.id.black_btn);
+        colorMenu        = findViewById(R.id.color_menu);
+        pencilRectangle  = findViewById(R.id.pencil_rectangle);
+        insTextRectangle = findViewById(R.id.ins_text_rectangle);
+        blackBtn         = findViewById(R.id.black_btn);
         blackBtn.setOnClickListener(e -> onBlackBtnClicked());
         whiteBtn = findViewById(R.id.white_btn);
         whiteBtn.setOnClickListener(e -> onWhiteBtnClicked());
@@ -240,6 +244,8 @@ public class MainActivity extends Activity
     {
         activePencilMode();
         showColorMenu();
+        pencilRectangle.setVisibility(View.VISIBLE);
+        insTextRectangle.setVisibility(View.INVISIBLE);
         return false;
     }
 
@@ -275,6 +281,8 @@ public class MainActivity extends Activity
     private void hideColorMenu()
     {
         colorMenu.setVisibility(View.INVISIBLE);
+        pencilRectangle.setVisibility(View.INVISIBLE);
+        insTextRectangle.setVisibility(View.INVISIBLE);
         blackBtn.setVisibility(View.INVISIBLE);
         whiteBtn.setVisibility(View.INVISIBLE);
         skyBlueBtn.setVisibility(View.INVISIBLE);
@@ -337,6 +345,8 @@ public class MainActivity extends Activity
     {
         isLongClickTextModeActive = true;
         showColorMenu();
+        insTextRectangle.setVisibility(View.VISIBLE);
+        pencilRectangle.setVisibility(View.INVISIBLE);
         activeTextMode();
         return false;
     }
