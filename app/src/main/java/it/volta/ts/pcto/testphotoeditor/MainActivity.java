@@ -187,6 +187,8 @@ public class MainActivity extends Activity
             @Override
             public void onStartViewChangeListener(@Nullable ViewType viewType)
             {
+                if(viewType == ViewType.TEXT)
+                    activeTextMode();
                 hideColorMenu();
             }
             @Override
@@ -293,13 +295,21 @@ public class MainActivity extends Activity
 
     private void onInsTextBtnClick()
     {
+        activeTextMode();
+        mPhotoEditor.addText("Enter Text", R.color.black);
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void activeTextMode()
+    {
         hideColorMenu();
         disableZoomLayout();
-        mPhotoEditor.addText("Enter Text", R.color.black);
         selectZoomLine.setVisibility(View.INVISIBLE);
         selectPencilLine.setVisibility(View.INVISIBLE);
         selectEraserLine.setVisibility(View.INVISIBLE);
         selectInsTextLine.setVisibility(View.VISIBLE);
+        mPhotoEditor.setBrushDrawingMode(false);
     }
 
     //---------------------------------------------------------------------------------------------
@@ -312,7 +322,7 @@ public class MainActivity extends Activity
         selectPencilLine.setVisibility(View.INVISIBLE);
         selectEraserLine.setVisibility(View.INVISIBLE);
         selectInsTextLine.setVisibility(View.INVISIBLE);
-        selectZoomLine.setVisibility(View.VISIBLE);//#4D808080
+        selectZoomLine.setVisibility(View.VISIBLE);
     }
 
     //---------------------------------------------------------------------------------------------
