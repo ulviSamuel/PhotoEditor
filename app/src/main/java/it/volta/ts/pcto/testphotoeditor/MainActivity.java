@@ -5,10 +5,10 @@ import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -32,6 +32,13 @@ public class MainActivity extends Activity
     private View            selectPencilLine;
     private View            selectEraserLine;
     private View            selectInsTextLine;
+    private View            colorMenu;
+    private ImageButton     blackBtn;
+    private ImageButton     whiteBtn;
+    private ImageButton     skyBlueBtn;
+    private ImageButton     yellowBtn;
+    private ImageButton     greenBtn;
+    private ImageButton     redBtn;
 
     //---------------------------------------------------------------------------------------------
 
@@ -67,6 +74,7 @@ public class MainActivity extends Activity
     {
         ImageButton imgButton = findViewById(R.id.pencil_btn);
         imgButton.setOnClickListener(e -> onPencilBtnClick());
+        imgButton.setOnLongClickListener(e -> onPencilBtnLongClick());
         imgButton = findViewById(R.id.eraser_btn);
         imgButton.setOnClickListener(e -> onEraserBtnClick());
         imgButton = findViewById(R.id.undo_btn);
@@ -84,25 +92,26 @@ public class MainActivity extends Activity
         selectPencilLine  = findViewById(R.id.select_line_pencil);
         selectEraserLine  = findViewById(R.id.select_line_eraser);
         selectInsTextLine = findViewById(R.id.select_line_ins_text);
-        initPencilMenu();
+        initColorMenu();
     }
 
     //---------------------------------------------------------------------------------------------
 
-    private void initPencilMenu()
+    private void initColorMenu()
     {
-        ImageButton imgButton = findViewById(R.id.black_btn);
-        imgButton.setOnClickListener(e ->  onBlackBtnClicked());
-        imgButton = findViewById(R.id.white_btn);
-        imgButton.setOnClickListener(e -> onWhiteBtnClicked());
-        imgButton = findViewById(R.id.sky_blue_btn);
-        imgButton.setOnClickListener(e -> onSkyBlueBtnClicked());
-        imgButton = findViewById(R.id.yellow_btn);
-        imgButton.setOnClickListener(e -> onYellowBtnClicked());
-        imgButton = findViewById(R.id.green_btn);
-        imgButton.setOnClickListener(e -> onGreenBtnClicked());
-        imgButton = findViewById(R.id.red_btn);
-        imgButton.setOnClickListener(e -> onRedBtnClicked());
+        colorMenu = findViewById(R.id.color_menu);
+        blackBtn  = findViewById(R.id.black_btn);
+        blackBtn.setOnClickListener(e -> onBlackBtnClicked());
+        whiteBtn = findViewById(R.id.white_btn);
+        whiteBtn.setOnClickListener(e -> onWhiteBtnClicked());
+        skyBlueBtn = findViewById(R.id.sky_blue_btn);
+        skyBlueBtn.setOnClickListener(e -> onSkyBlueBtnClicked());
+        yellowBtn = findViewById(R.id.yellow_btn);
+        yellowBtn.setOnClickListener(e -> onYellowBtnClicked());
+        greenBtn = findViewById(R.id.green_btn);
+        greenBtn.setOnClickListener(e -> onGreenBtnClicked());
+        redBtn = findViewById(R.id.red_btn);
+        redBtn.setOnClickListener(e -> onRedBtnClicked());
     }
 
     //---------------------------------------------------------------------------------------------
@@ -166,15 +175,30 @@ public class MainActivity extends Activity
                 changeText(view, i);
             }
             @Override
-            public void onAddViewListener(@Nullable ViewType viewType, int i) {}
+            public void onAddViewListener(@Nullable ViewType viewType, int i)
+            {
+                hideColorMenu();
+            }
             @Override
-            public void onRemoveViewListener(@Nullable ViewType viewType, int i) {}
+            public void onRemoveViewListener(@Nullable ViewType viewType, int i)
+            {
+                hideColorMenu();
+            }
             @Override
-            public void onStartViewChangeListener(@Nullable ViewType viewType) {}
+            public void onStartViewChangeListener(@Nullable ViewType viewType)
+            {
+                hideColorMenu();
+            }
             @Override
-            public void onStopViewChangeListener(@Nullable ViewType viewType) {}
+            public void onStopViewChangeListener(@Nullable ViewType viewType)
+            {
+                hideColorMenu();
+            }
             @Override
-            public void onTouchSourceImage(@Nullable MotionEvent motionEvent) {}
+            public void onTouchSourceImage(@Nullable MotionEvent motionEvent)
+            {
+                hideColorMenu();
+            }
         });
     }
 
@@ -192,9 +216,31 @@ public class MainActivity extends Activity
 
     //---------------------------------------------------------------------------------------------
 
+    private boolean onPencilBtnLongClick()
+    {
+        showColorMenu();
+        return false;
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void showColorMenu()
+    {
+        colorMenu.setVisibility(View.VISIBLE);
+        blackBtn.setVisibility(View.VISIBLE);
+        whiteBtn.setVisibility(View.VISIBLE);
+        skyBlueBtn.setVisibility(View.VISIBLE);
+        yellowBtn.setVisibility(View.VISIBLE);
+        greenBtn.setVisibility(View.VISIBLE);
+        redBtn.setVisibility(View.VISIBLE);
+    }
+
+    //---------------------------------------------------------------------------------------------
+
     private void onEraserBtnClick()
     {
         disableZoomLayout();
+        hideColorMenu();
         mPhotoEditor.brushEraser();
         selectZoomLine.setVisibility(View.INVISIBLE);
         selectPencilLine.setVisibility(View.INVISIBLE);
@@ -204,8 +250,22 @@ public class MainActivity extends Activity
 
     //---------------------------------------------------------------------------------------------
 
+    private void hideColorMenu()
+    {
+        colorMenu.setVisibility(View.INVISIBLE);
+        blackBtn.setVisibility(View.INVISIBLE);
+        whiteBtn.setVisibility(View.INVISIBLE);
+        skyBlueBtn.setVisibility(View.INVISIBLE);
+        yellowBtn.setVisibility(View.INVISIBLE);
+        greenBtn.setVisibility(View.INVISIBLE);
+        redBtn.setVisibility(View.INVISIBLE);
+    }
+
+    //---------------------------------------------------------------------------------------------
+
     private void onUndoBtnClick()
     {
+        hideColorMenu();
         mPhotoEditor.undo();
     }
 
@@ -213,6 +273,7 @@ public class MainActivity extends Activity
 
     private void onRedoBtnClick()
     {
+        hideColorMenu();
         mPhotoEditor.redo();
     }
 
@@ -220,6 +281,7 @@ public class MainActivity extends Activity
 
     private void onDeleteBtnClick()
     {
+        hideColorMenu();
         mPhotoEditor.clearAllViews();
     }
 
@@ -227,6 +289,7 @@ public class MainActivity extends Activity
 
     private void onInsTextBtnClick()
     {
+        hideColorMenu();
         disableZoomLayout();
         mPhotoEditor.addText("Enter Text", R.color.black);
         selectZoomLine.setVisibility(View.INVISIBLE);
@@ -239,60 +302,104 @@ public class MainActivity extends Activity
 
     private void onZoomBtnClick()
     {
+        hideColorMenu();
         mPhotoEditor.setBrushDrawingMode(false);
         activeZoomLayout();
         selectPencilLine.setVisibility(View.INVISIBLE);
         selectEraserLine.setVisibility(View.INVISIBLE);
         selectInsTextLine.setVisibility(View.INVISIBLE);
-        selectZoomLine.setVisibility(View.VISIBLE);
+        selectZoomLine.setVisibility(View.VISIBLE);//#4D808080
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void onBlackBtnClicked()
     {
+        hideColorMenu();
         mPhotoEditor.setBrushColor(Color.parseColor("#000000"));
+        whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        yellowBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        greenBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        redBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        blackBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void onWhiteBtnClicked()
     {
+        hideColorMenu();
         mPhotoEditor.setBrushColor(Color.parseColor("#FFFFFF"));
+        blackBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        yellowBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        greenBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        redBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void onSkyBlueBtnClicked()
     {
+        hideColorMenu();
         mPhotoEditor.setBrushColor(Color.parseColor("#0967D2"));
+        blackBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        yellowBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        greenBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        redBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void onYellowBtnClicked()
     {
+        hideColorMenu();
         mPhotoEditor.setBrushColor(Color.parseColor("#F0B429"));
+        blackBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        greenBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        redBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        yellowBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void onGreenBtnClicked()
     {
+        hideColorMenu();
         mPhotoEditor.setBrushColor(Color.parseColor("#18981D"));
+        blackBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        yellowBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        redBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        greenBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void onRedBtnClicked()
     {
+        hideColorMenu();
         mPhotoEditor.setBrushColor(Color.parseColor("#E12D39"));
+        blackBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        yellowBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        greenBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
+        redBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void onCheckBtnClick()
     {
+        hideColorMenu();
         mPhotoEditor.saveAsBitmap(new OnSaveBitmap()
         {
             @Override

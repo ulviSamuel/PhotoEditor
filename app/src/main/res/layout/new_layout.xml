@@ -261,7 +261,7 @@
         app:layout_constraintVertical_bias="0.02" />
 
     <View
-        android:id="@+id/pencil_menu"
+        android:id="@+id/color_menu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_alignParentLeft="true"
@@ -271,7 +271,8 @@
         app:layout_constraintEnd_toStartOf="@+id/end_guideline"
         app:layout_constraintStart_toEndOf="@+id/redo_btn"
         app:layout_constraintTop_toTopOf="@+id/pencil_menu_guideline"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:visibility="invisible"/>
 
     <ImageButton
         android:id="@+id/black_btn"
@@ -279,12 +280,13 @@
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/black_circle"
-        app:layout_constraintBottom_toBottomOf="@+id/pencil_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/color_menu"
         app:layout_constraintEnd_toStartOf="@+id/white_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/zoom_layout"
-        app:layout_constraintStart_toStartOf="@+id/pencil_menu"
-        app:layout_constraintTop_toTopOf="@+id/pencil_menu" />
+        app:layout_constraintStart_toStartOf="@+id/color_menu"
+        app:layout_constraintTop_toTopOf="@+id/color_menu"
+        android:visibility="invisible"/>
 
     <ImageButton
         android:id="@+id/white_btn"
@@ -292,11 +294,12 @@
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/white_circle"
-        app:layout_constraintBottom_toBottomOf="@+id/pencil_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/color_menu"
         app:layout_constraintEnd_toStartOf="@+id/sky_blue_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/black_btn"
-        app:layout_constraintTop_toTopOf="@+id/pencil_menu" />
+        app:layout_constraintTop_toTopOf="@+id/color_menu"
+        android:visibility="invisible"/>
 
     <ImageButton
         android:id="@+id/sky_blue_btn"
@@ -304,11 +307,12 @@
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/sky_blue_circle"
-        app:layout_constraintBottom_toBottomOf="@+id/pencil_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/color_menu"
         app:layout_constraintEnd_toStartOf="@+id/yellow_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/white_btn"
-        app:layout_constraintTop_toTopOf="@+id/pencil_menu" />
+        app:layout_constraintTop_toTopOf="@+id/color_menu"
+        android:visibility="invisible"/>
 
     <ImageButton
         android:id="@+id/yellow_btn"
@@ -316,11 +320,12 @@
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/yellow_circle"
-        app:layout_constraintBottom_toBottomOf="@+id/pencil_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/color_menu"
         app:layout_constraintEnd_toStartOf="@+id/green_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/sky_blue_btn"
-        app:layout_constraintTop_toTopOf="@+id/pencil_menu" />
+        app:layout_constraintTop_toTopOf="@+id/color_menu"
+        android:visibility="invisible"/>
 
     <ImageButton
         android:id="@+id/green_btn"
@@ -328,11 +333,12 @@
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/green_circle"
-        app:layout_constraintBottom_toBottomOf="@+id/pencil_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/color_menu"
         app:layout_constraintEnd_toStartOf="@+id/red_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/yellow_btn"
-        app:layout_constraintTop_toTopOf="@+id/pencil_menu" />
+        app:layout_constraintTop_toTopOf="@+id/color_menu"
+        android:visibility="invisible"/>
 
     <ImageButton
         android:id="@+id/red_btn"
@@ -340,11 +346,12 @@
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/red_circle"
-        app:layout_constraintBottom_toBottomOf="@+id/pencil_menu"
-        app:layout_constraintEnd_toEndOf="@+id/pencil_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/color_menu"
+        app:layout_constraintEnd_toEndOf="@+id/color_menu"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/green_btn"
-        app:layout_constraintTop_toTopOf="@+id/pencil_menu" />
+        app:layout_constraintTop_toTopOf="@+id/color_menu"
+        android:visibility="invisible"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/pencil_menu_guideline"

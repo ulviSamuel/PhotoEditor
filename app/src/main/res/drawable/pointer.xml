@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
-    android:width="15dp"
-    android:height="15dp"
-    android:viewportWidth="15"
-    android:viewportHeight="15"
-    >
-    <group>
-        <clip-path
-            android:pathData="M1 0H14C14.5523 0 15 0.447715 15 1V14C15 14.5523 14.5523 15 14 15H1C0.447715 15 0 14.5523 0 14V1C0 0.447715 0.447715 0 1 0Z"
-            />
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="100dp"
+    android:width="100dp"
+    android:viewportHeight="100"
+    android:viewportWidth="100" >
+    <group
+        android:name="triableGroup">
         <path
-            android:pathData="M0 0V15H15V0"
+            android:name="triangle"
             android:fillColor="#FFFFFF"
-            />
+            android:pathData="M 0,20 L 0,0 L 100,0 L 100,20 L 54,55  l -1,0.6  l -1,0.4  l -1,0.2  l -1,0   l -1,-0  l -1,-0.2  l -1,-0.4  l -1,-0.6    L 46,55   L 0,20 -100,-100 Z" />
     </group>
 </vector>
