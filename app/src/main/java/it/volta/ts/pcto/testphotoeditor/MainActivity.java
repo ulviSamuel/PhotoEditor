@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.otaliastudios.zoom.ZoomLayout;
 
 import ja.burhanrashid52.photoeditor.OnPhotoEditorListener;
@@ -493,19 +494,17 @@ public class MainActivity extends Activity
 
     private void changeText(View view, int i)
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
         builder.setTitle("Enter text");
         final EditText editText = new EditText(this);
         builder.setView(editText);
         builder.setPositiveButton(R.string.ok, (dialog, which) -> {
             String inputText = editText.getText().toString();
-            mPhotoEditor.editText(view, inputText, i);
             dialog.dismiss();
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> {
             dialog.dismiss();
         });
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        builder.show();
     }
 }
