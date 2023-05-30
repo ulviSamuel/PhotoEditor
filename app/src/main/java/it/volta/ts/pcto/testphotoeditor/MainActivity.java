@@ -39,6 +39,8 @@ public class MainActivity extends Activity
     private ImageButton     yellowBtn;
     private ImageButton     greenBtn;
     private ImageButton     redBtn;
+    private String          colorSelected;
+    private boolean         isLongClickTextModeActive;
 
     //---------------------------------------------------------------------------------------------
 
@@ -55,7 +57,9 @@ public class MainActivity extends Activity
 
     private void initVariables()
     {
-        mPhotoEditor = null;
+        mPhotoEditor              = null;
+        colorSelected             = "#000000";
+        isLongClickTextModeActive = false;
     }
 
     //---------------------------------------------------------------------------------------------
@@ -85,6 +89,7 @@ public class MainActivity extends Activity
         imgButton.setOnClickListener(e -> onDeleteBtnClick());
         imgButton = findViewById(R.id.ins_text_btn);
         imgButton.setOnClickListener(e -> onInsTextBtnClick());
+        imgButton.setOnLongClickListener(e -> onInsTextBtnLongClick());
         imgButton = findViewById(R.id.zoom_btn);
         imgButton.setOnClickListener(e -> onZoomBtnClick());
         selectZoomLine = findViewById(R.id.select_line_zoom);
@@ -178,11 +183,13 @@ public class MainActivity extends Activity
             public void onAddViewListener(@Nullable ViewType viewType, int i)
             {
                 hideColorMenu();
+                isLongClickTextModeActive = false;
             }
             @Override
             public void onRemoveViewListener(@Nullable ViewType viewType, int i)
             {
                 hideColorMenu();
+                isLongClickTextModeActive = false;
             }
             @Override
             public void onStartViewChangeListener(@Nullable ViewType viewType)
@@ -190,16 +197,19 @@ public class MainActivity extends Activity
                 if(viewType == ViewType.TEXT)
                     activeTextMode();
                 hideColorMenu();
+                isLongClickTextModeActive = false;
             }
             @Override
             public void onStopViewChangeListener(@Nullable ViewType viewType)
             {
                 hideColorMenu();
+                isLongClickTextModeActive = false;
             }
             @Override
             public void onTouchSourceImage(@Nullable MotionEvent motionEvent)
             {
                 hideColorMenu();
+                isLongClickTextModeActive = false;
             }
         });
     }
@@ -208,6 +218,14 @@ public class MainActivity extends Activity
 
     private void onPencilBtnClick()
     {
+        activePencilMode();
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void activePencilMode()
+    {
+        isLongClickTextModeActive = false;
         disableZoomLayout();
         mPhotoEditor.setBrushDrawingMode(true);
         selectZoomLine.setVisibility(View.INVISIBLE);
@@ -220,11 +238,8 @@ public class MainActivity extends Activity
 
     private boolean onPencilBtnLongClick()
     {
+        activePencilMode();
         showColorMenu();
-        selectZoomLine.setVisibility(View.INVISIBLE);
-        selectEraserLine.setVisibility(View.INVISIBLE);
-        selectInsTextLine.setVisibility(View.INVISIBLE);
-        selectPencilLine.setVisibility(View.VISIBLE);
         return false;
     }
 
@@ -247,6 +262,7 @@ public class MainActivity extends Activity
     {
         disableZoomLayout();
         hideColorMenu();
+        isLongClickTextModeActive = false;
         mPhotoEditor.brushEraser();
         selectZoomLine.setVisibility(View.INVISIBLE);
         selectPencilLine.setVisibility(View.INVISIBLE);
@@ -272,6 +288,7 @@ public class MainActivity extends Activity
     private void onUndoBtnClick()
     {
         hideColorMenu();
+        isLongClickTextModeActive = false;
         mPhotoEditor.undo();
     }
 
@@ -280,6 +297,7 @@ public class MainActivity extends Activity
     private void onRedoBtnClick()
     {
         hideColorMenu();
+        isLongClickTextModeActive = false;
         mPhotoEditor.redo();
     }
 
@@ -288,6 +306,7 @@ public class MainActivity extends Activity
     private void onDeleteBtnClick()
     {
         hideColorMenu();
+        isLongClickTextModeActive = false;
         mPhotoEditor.clearAllViews();
     }
 
@@ -296,14 +315,14 @@ public class MainActivity extends Activity
     private void onInsTextBtnClick()
     {
         activeTextMode();
-        mPhotoEditor.addText("Enter Text", R.color.black);
+        if(isLongClickTextModeActive == false)
+            mPhotoEditor.addText("Enter Text", Color.parseColor(colorSelected));
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void activeTextMode()
     {
-        hideColorMenu();
         disableZoomLayout();
         selectZoomLine.setVisibility(View.INVISIBLE);
         selectPencilLine.setVisibility(View.INVISIBLE);
@@ -314,9 +333,20 @@ public class MainActivity extends Activity
 
     //---------------------------------------------------------------------------------------------
 
+    private boolean onInsTextBtnLongClick()
+    {
+        isLongClickTextModeActive = true;
+        showColorMenu();
+        activeTextMode();
+        return false;
+    }
+
+    //---------------------------------------------------------------------------------------------
+
     private void onZoomBtnClick()
     {
         hideColorMenu();
+        isLongClickTextModeActive = false;
         mPhotoEditor.setBrushDrawingMode(false);
         activeZoomLayout();
         selectPencilLine.setVisibility(View.INVISIBLE);
@@ -330,6 +360,7 @@ public class MainActivity extends Activity
     private void onBlackBtnClicked()
     {
         hideColorMenu();
+        colorSelected = "#000000";
         mPhotoEditor.setBrushColor(Color.parseColor("#000000"));
         whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
@@ -337,6 +368,18 @@ public class MainActivity extends Activity
         greenBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         redBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         blackBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
+        deactiveLongClickTextMode();
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void deactiveLongClickTextMode()
+    {
+        if(isLongClickTextModeActive == true)
+        {
+            mPhotoEditor.addText("Enter Text", Color.parseColor(colorSelected));
+            isLongClickTextModeActive = false;
+        }
     }
 
     //---------------------------------------------------------------------------------------------
@@ -344,6 +387,7 @@ public class MainActivity extends Activity
     private void onWhiteBtnClicked()
     {
         hideColorMenu();
+        colorSelected = "#FFFFFF";
         mPhotoEditor.setBrushColor(Color.parseColor("#FFFFFF"));
         blackBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
@@ -351,6 +395,7 @@ public class MainActivity extends Activity
         greenBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         redBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
+        deactiveLongClickTextMode();
     }
 
     //---------------------------------------------------------------------------------------------
@@ -358,6 +403,7 @@ public class MainActivity extends Activity
     private void onSkyBlueBtnClicked()
     {
         hideColorMenu();
+        colorSelected = "#0967D2";
         mPhotoEditor.setBrushColor(Color.parseColor("#0967D2"));
         blackBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
@@ -365,6 +411,7 @@ public class MainActivity extends Activity
         greenBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         redBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
+        deactiveLongClickTextMode();
     }
 
     //---------------------------------------------------------------------------------------------
@@ -372,6 +419,7 @@ public class MainActivity extends Activity
     private void onYellowBtnClicked()
     {
         hideColorMenu();
+        colorSelected = "#F0B429";
         mPhotoEditor.setBrushColor(Color.parseColor("#F0B429"));
         blackBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
@@ -379,6 +427,7 @@ public class MainActivity extends Activity
         greenBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         redBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         yellowBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
+        deactiveLongClickTextMode();
     }
 
     //---------------------------------------------------------------------------------------------
@@ -386,6 +435,7 @@ public class MainActivity extends Activity
     private void onGreenBtnClicked()
     {
         hideColorMenu();
+        colorSelected = "#18981D";
         mPhotoEditor.setBrushColor(Color.parseColor("#18981D"));
         blackBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
@@ -393,6 +443,7 @@ public class MainActivity extends Activity
         skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         redBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         greenBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
+        deactiveLongClickTextMode();
     }
 
     //---------------------------------------------------------------------------------------------
@@ -400,6 +451,7 @@ public class MainActivity extends Activity
     private void onRedBtnClicked()
     {
         hideColorMenu();
+        colorSelected = "#E12D39";
         mPhotoEditor.setBrushColor(Color.parseColor("#E12D39"));
         blackBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         whiteBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
@@ -407,6 +459,7 @@ public class MainActivity extends Activity
         greenBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         skyBlueBtn.setBackground(new ColorDrawable(Color.parseColor("#00FFFFFF")));
         redBtn.setBackground(new ColorDrawable(Color.parseColor("#4D808080")));
+        deactiveLongClickTextMode();
     }
 
     //---------------------------------------------------------------------------------------------

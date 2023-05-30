@@ -278,7 +278,7 @@
         android:id="@+id/black_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/transparent"
+        android:background="#4D808080"
         android:src="@drawable/black_circle"
         app:layout_constraintBottom_toBottomOf="@+id/color_menu"
         app:layout_constraintEnd_toStartOf="@+id/white_btn"
