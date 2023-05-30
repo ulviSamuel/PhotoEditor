@@ -219,6 +219,10 @@ public class MainActivity extends Activity
     private boolean onPencilBtnLongClick()
     {
         showColorMenu();
+        selectZoomLine.setVisibility(View.INVISIBLE);
+        selectEraserLine.setVisibility(View.INVISIBLE);
+        selectInsTextLine.setVisibility(View.INVISIBLE);
+        selectPencilLine.setVisibility(View.VISIBLE);
         return false;
     }
 
