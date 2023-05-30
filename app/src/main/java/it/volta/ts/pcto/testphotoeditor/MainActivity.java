@@ -50,7 +50,7 @@ public class MainActivity extends Activity
         configDesignBar();
         configPhotoEditor();
         configZoomLayout();
-        //configureCheckButton();
+        configureCheckButton();
     }
 
     //---------------------------------------------------------------------------------------------

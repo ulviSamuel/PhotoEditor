@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
         app:maxZoom="2.5"
         app:maxZoomType="zoom"
         app:minZoom="0.7"
@@ -35,7 +35,8 @@
         app:transformationGravity="auto"
         app:twoFingersScrollEnabled="true"
         app:verticalPanEnabled="false"
-        app:zoomEnabled="true">
+        app:zoomEnabled="true"
+        android:layout_margin="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +52,7 @@
     </com.otaliastudios.zoom.ZoomLayout>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_guideline"
+        android:id="@+id/bottom_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -83,7 +84,7 @@
         app:layout_constraintEnd_toStartOf="@+id/end_guideline"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/start_guideline"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline"
+        app:layout_constraintTop_toTopOf="@+id/bottom_guideline"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
@@ -174,13 +175,42 @@
         android:id="@+id/view"
         android:layout_width="1dp"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
         app:layout_constraintEnd_toStartOf="@+id/zoomBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/redoBtn"
-        app:layout_constraintTop_toTopOf="@+id/design_bar"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        app:layout_constraintTop_toTopOf="@+id/design_bar" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/confirm_btn_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <ImageButton
+        android:id="@+id/checkBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/baseline_check_circle_24"
+        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/confirm_btn_guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
