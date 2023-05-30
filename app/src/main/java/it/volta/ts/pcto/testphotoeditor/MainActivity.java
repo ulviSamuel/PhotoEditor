@@ -44,6 +44,7 @@ public class MainActivity extends Activity
     private ImageButton     redBtn;
     private String          colorSelected;
     private boolean         isLongClickTextModeActive;
+    private boolean         isLongClickPencilModeActive;
 
     //---------------------------------------------------------------------------------------------
 
@@ -60,9 +61,10 @@ public class MainActivity extends Activity
 
     private void initVariables()
     {
-        mPhotoEditor              = null;
-        colorSelected             = "#000000";
-        isLongClickTextModeActive = false;
+        mPhotoEditor                = null;
+        colorSelected               = "#000000";
+        isLongClickTextModeActive   = false;
+        isLongClickPencilModeActive = false;
     }
 
     //---------------------------------------------------------------------------------------------
@@ -188,13 +190,15 @@ public class MainActivity extends Activity
             public void onAddViewListener(@Nullable ViewType viewType, int i)
             {
                 hideColorMenu();
-                isLongClickTextModeActive = false;
+                isLongClickTextModeActive   = false;
+                isLongClickPencilModeActive = false;
             }
             @Override
             public void onRemoveViewListener(@Nullable ViewType viewType, int i)
             {
                 hideColorMenu();
-                isLongClickTextModeActive = false;
+                isLongClickTextModeActive   = false;
+                isLongClickPencilModeActive = false;
             }
             @Override
             public void onStartViewChangeListener(@Nullable ViewType viewType)
@@ -202,19 +206,22 @@ public class MainActivity extends Activity
                 if(viewType == ViewType.TEXT)
                     activeTextMode();
                 hideColorMenu();
-                isLongClickTextModeActive = false;
+                isLongClickTextModeActive   = false;
+                isLongClickPencilModeActive = false;
             }
             @Override
             public void onStopViewChangeListener(@Nullable ViewType viewType)
             {
                 hideColorMenu();
-                isLongClickTextModeActive = false;
+                isLongClickTextModeActive   = false;
+                isLongClickPencilModeActive = false;
             }
             @Override
             public void onTouchSourceImage(@Nullable MotionEvent motionEvent)
             {
                 hideColorMenu();
-                isLongClickTextModeActive = false;
+                isLongClickTextModeActive   = false;
+                isLongClickPencilModeActive = false;
             }
         });
     }
@@ -224,6 +231,8 @@ public class MainActivity extends Activity
     private void onPencilBtnClick()
     {
         activePencilMode();
+        if(isLongClickPencilModeActive == false)
+            hideColorMenu();
     }
 
     //---------------------------------------------------------------------------------------------
@@ -243,6 +252,7 @@ public class MainActivity extends Activity
 
     private boolean onPencilBtnLongClick()
     {
+        isLongClickPencilModeActive = true;
         activePencilMode();
         showColorMenu();
         pencilRectangle.setVisibility(View.VISIBLE);
@@ -269,7 +279,8 @@ public class MainActivity extends Activity
     {
         disableZoomLayout();
         hideColorMenu();
-        isLongClickTextModeActive = false;
+        isLongClickTextModeActive   = false;
+        isLongClickPencilModeActive = false;
         mPhotoEditor.brushEraser();
         selectZoomLine.setVisibility(View.INVISIBLE);
         selectPencilLine.setVisibility(View.INVISIBLE);
@@ -297,7 +308,8 @@ public class MainActivity extends Activity
     private void onUndoBtnClick()
     {
         hideColorMenu();
-        isLongClickTextModeActive = false;
+        isLongClickTextModeActive   = false;
+        isLongClickPencilModeActive = false;
         mPhotoEditor.undo();
     }
 
@@ -306,7 +318,8 @@ public class MainActivity extends Activity
     private void onRedoBtnClick()
     {
         hideColorMenu();
-        isLongClickTextModeActive = false;
+        isLongClickTextModeActive   = false;
+        isLongClickPencilModeActive = false;
         mPhotoEditor.redo();
     }
 
@@ -315,7 +328,8 @@ public class MainActivity extends Activity
     private void onDeleteBtnClick()
     {
         hideColorMenu();
-        isLongClickTextModeActive = false;
+        isLongClickTextModeActive   = false;
+        isLongClickPencilModeActive = false;
         mPhotoEditor.clearAllViews();
     }
 
@@ -326,12 +340,15 @@ public class MainActivity extends Activity
         activeTextMode();
         if(isLongClickTextModeActive == false)
             mPhotoEditor.addText("Enter Text", Color.parseColor(colorSelected));
+        else
+            isLongClickTextModeActive = false;
     }
 
     //---------------------------------------------------------------------------------------------
 
     private void activeTextMode()
     {
+        isLongClickPencilModeActive = false;
         disableZoomLayout();
         selectZoomLine.setVisibility(View.INVISIBLE);
         selectPencilLine.setVisibility(View.INVISIBLE);
@@ -357,7 +374,8 @@ public class MainActivity extends Activity
     private void onZoomBtnClick()
     {
         hideColorMenu();
-        isLongClickTextModeActive = false;
+        isLongClickTextModeActive   = false;
+        isLongClickPencilModeActive = false;
         mPhotoEditor.setBrushDrawingMode(false);
         activeZoomLayout();
         selectPencilLine.setVisibility(View.INVISIBLE);
@@ -500,6 +518,7 @@ public class MainActivity extends Activity
         builder.setView(editText);
         builder.setPositiveButton(R.string.ok, (dialog, which) -> {
             String inputText = editText.getText().toString();
+            mPhotoEditor.editText(view, inputText, i);
             dialog.dismiss();
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> {
