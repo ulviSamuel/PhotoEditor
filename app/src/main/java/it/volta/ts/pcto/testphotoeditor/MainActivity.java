@@ -3,10 +3,12 @@ package it.volta.ts.pcto.testphotoeditor;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -82,6 +84,25 @@ public class MainActivity extends Activity
         selectPencilLine  = findViewById(R.id.select_line_pencil);
         selectEraserLine  = findViewById(R.id.select_line_eraser);
         selectInsTextLine = findViewById(R.id.select_line_ins_text);
+        initPencilMenu();
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void initPencilMenu()
+    {
+        ImageButton imgButton = findViewById(R.id.black_btn);
+        imgButton.setOnClickListener(e ->  onBlackBtnClicked());
+        imgButton = findViewById(R.id.white_btn);
+        imgButton.setOnClickListener(e -> onWhiteBtnClicked());
+        imgButton = findViewById(R.id.sky_blue_btn);
+        imgButton.setOnClickListener(e -> onSkyBlueBtnClicked());
+        imgButton = findViewById(R.id.yellow_btn);
+        imgButton.setOnClickListener(e -> onYellowBtnClicked());
+        imgButton = findViewById(R.id.green_btn);
+        imgButton.setOnClickListener(e -> onGreenBtnClicked());
+        imgButton = findViewById(R.id.red_btn);
+        imgButton.setOnClickListener(e -> onRedBtnClicked());
     }
 
     //---------------------------------------------------------------------------------------------
@@ -224,6 +245,48 @@ public class MainActivity extends Activity
         selectEraserLine.setVisibility(View.INVISIBLE);
         selectInsTextLine.setVisibility(View.INVISIBLE);
         selectZoomLine.setVisibility(View.VISIBLE);
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void onBlackBtnClicked()
+    {
+        mPhotoEditor.setBrushColor(Color.parseColor("#000000"));
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void onWhiteBtnClicked()
+    {
+        mPhotoEditor.setBrushColor(Color.parseColor("#FFFFFF"));
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void onSkyBlueBtnClicked()
+    {
+        mPhotoEditor.setBrushColor(Color.parseColor("#0967D2"));
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void onYellowBtnClicked()
+    {
+        mPhotoEditor.setBrushColor(Color.parseColor("#F0B429"));
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void onGreenBtnClicked()
+    {
+        mPhotoEditor.setBrushColor(Color.parseColor("#18981D"));
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    private void onRedBtnClicked()
+    {
+        mPhotoEditor.setBrushColor(Color.parseColor("#E12D39"));
     }
 
     //---------------------------------------------------------------------------------------------
