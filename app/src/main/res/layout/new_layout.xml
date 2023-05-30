@@ -6,7 +6,7 @@
     android:background="@color/design_frame_background">
 
     <com.otaliastudios.zoom.ZoomLayout
-        android:id="@+id/zoomLayout"
+        android:id="@+id/zoom_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="30dp"
@@ -42,7 +42,7 @@
             android:layout_height="match_parent">
 
             <ja.burhanrashid52.photoeditor.PhotoEditorView
-                android:id="@+id/photoEditorView"
+                android:id="@+id/photo_editor_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -87,19 +87,19 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/undoBtn"
+        android:id="@+id/undo_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/undo_icon"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintEnd_toStartOf="@+id/redoBtn"
+        app:layout_constraintEnd_toStartOf="@+id/redo_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/design_bar"
         app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
-        android:id="@+id/redoBtn"
+        android:id="@+id/redo_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
@@ -107,59 +107,59 @@
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
         app:layout_constraintEnd_toStartOf="@+id/grey_line"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/undoBtn"
+        app:layout_constraintStart_toEndOf="@+id/undo_btn"
         app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
-        android:id="@+id/zoomBtn"
+        android:id="@+id/zoom_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/zoom_icon24"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintEnd_toStartOf="@+id/pencilBtn"
+        app:layout_constraintEnd_toStartOf="@+id/pencil_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/grey_line"
         app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
-        android:id="@+id/pencilBtn"
+        android:id="@+id/pencil_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/pencil_icon24"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintEnd_toStartOf="@+id/eraserBtn"
+        app:layout_constraintEnd_toStartOf="@+id/eraser_btn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/zoomBtn"
+        app:layout_constraintStart_toEndOf="@+id/zoom_btn"
         app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
-        android:id="@+id/eraserBtn"
+        android:id="@+id/eraser_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/eraser_icon24"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintEnd_toStartOf="@+id/insTextBtn"
+        app:layout_constraintEnd_toStartOf="@+id/ins_text_btn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/pencilBtn"
+        app:layout_constraintStart_toEndOf="@+id/pencil_btn"
         app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
-        android:id="@+id/insTextBtn"
+        android:id="@+id/ins_text_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
         android:src="@drawable/text_ins_icon16"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintEnd_toStartOf="@+id/deleteBtn"
+        app:layout_constraintEnd_toStartOf="@+id/delete_btn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/eraserBtn"
+        app:layout_constraintStart_toEndOf="@+id/eraser_btn"
         app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
-        android:id="@+id/deleteBtn"
+        android:id="@+id/delete_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
@@ -167,7 +167,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
         app:layout_constraintEnd_toEndOf="@+id/design_bar"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/insTextBtn"
+        app:layout_constraintStart_toEndOf="@+id/ins_text_btn"
         app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <View
@@ -178,9 +178,9 @@
         android:layout_marginBottom="10dp"
         android:background="@color/grey_line"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintEnd_toStartOf="@+id/zoomBtn"
+        app:layout_constraintEnd_toStartOf="@+id/zoom_btn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/redoBtn"
+        app:layout_constraintStart_toEndOf="@+id/redo_btn"
         app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
 
@@ -190,7 +190,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/confirm_btn_guideline"
@@ -200,7 +200,7 @@
         app:layout_constraintGuide_percent="0.85" />
 
     <ImageButton
-        android:id="@+id/checkBtn"
+        android:id="@+id/check_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
@@ -217,8 +217,8 @@
         android:layout_height="3dp"
         android:background="@color/select_line_color"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintEnd_toEndOf="@+id/zoomBtn"
-        app:layout_constraintStart_toStartOf="@+id/zoomBtn"
+        app:layout_constraintEnd_toEndOf="@+id/zoom_btn"
+        app:layout_constraintStart_toStartOf="@+id/zoom_btn"
         app:layout_constraintTop_toTopOf="@+id/design_bar"
         app:layout_constraintVertical_bias="0.02"
         android:visibility="invisible"/>
@@ -229,8 +229,8 @@
         android:layout_height="3dp"
         android:background="@color/select_line_color"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintEnd_toEndOf="@+id/pencilBtn"
-        app:layout_constraintStart_toStartOf="@+id/pencilBtn"
+        app:layout_constraintEnd_toEndOf="@+id/pencil_btn"
+        app:layout_constraintStart_toStartOf="@+id/pencil_btn"
         app:layout_constraintTop_toTopOf="@+id/design_bar"
         app:layout_constraintVertical_bias="0.02"
         android:visibility="invisible"/>
@@ -242,8 +242,8 @@
         android:background="@color/select_line_color"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintEnd_toEndOf="@+id/eraserBtn"
-        app:layout_constraintStart_toStartOf="@+id/eraserBtn"
+        app:layout_constraintEnd_toEndOf="@+id/eraser_btn"
+        app:layout_constraintStart_toStartOf="@+id/eraser_btn"
         app:layout_constraintTop_toTopOf="@+id/design_bar"
         app:layout_constraintVertical_bias="0.02" />
 
@@ -254,8 +254,8 @@
         android:background="@color/select_line_color"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintEnd_toEndOf="@+id/insTextBtn"
-        app:layout_constraintStart_toStartOf="@+id/insTextBtn"
+        app:layout_constraintEnd_toEndOf="@+id/ins_text_btn"
+        app:layout_constraintStart_toStartOf="@+id/ins_text_btn"
         app:layout_constraintTop_toTopOf="@+id/design_bar"
         app:layout_constraintVertical_bias="0.02" />
 

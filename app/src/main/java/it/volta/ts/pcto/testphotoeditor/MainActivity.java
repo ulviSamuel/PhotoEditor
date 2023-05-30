@@ -63,19 +63,19 @@ public class MainActivity extends Activity
 
     private void configDesignBar()
     {
-        ImageButton imgButton = findViewById(R.id.pencilBtn);
+        ImageButton imgButton = findViewById(R.id.pencil_btn);
         imgButton.setOnClickListener(e -> onPencilBtnClick());
-        imgButton = findViewById(R.id.eraserBtn);
+        imgButton = findViewById(R.id.eraser_btn);
         imgButton.setOnClickListener(e -> onEraserBtnClick());
-        imgButton = findViewById(R.id.undoBtn);
+        imgButton = findViewById(R.id.undo_btn);
         imgButton.setOnClickListener(e -> onUndoBtnClick());
-        imgButton = findViewById(R.id.redoBtn);
+        imgButton = findViewById(R.id.redo_btn);
         imgButton.setOnClickListener(e -> onRedoBtnClick());
-        imgButton = findViewById(R.id.deleteBtn);
+        imgButton = findViewById(R.id.delete_btn);
         imgButton.setOnClickListener(e -> onDeleteBtnClick());
-        imgButton = findViewById(R.id.insTextBtn);
+        imgButton = findViewById(R.id.ins_text_btn);
         imgButton.setOnClickListener(e -> onInsTextBtnClick());
-        imgButton = findViewById(R.id.zoomBtn);
+        imgButton = findViewById(R.id.zoom_btn);
         imgButton.setOnClickListener(e -> onZoomBtnClick());
         selectZoomLine = findViewById(R.id.select_line_zoom);
         selectZoomLine.setVisibility(View.VISIBLE);
@@ -88,7 +88,7 @@ public class MainActivity extends Activity
 
     private void configPhotoEditor()
     {
-        mPhotoEditorView = findViewById(R.id.photoEditorView);
+        mPhotoEditorView = findViewById(R.id.photo_editor_view);
         mPhotoEditorView.getSource().setImageResource(R.drawable.img_test_icon);
         Typeface mTextRobotoTf = ResourcesCompat.getFont(this, R.font.roboto_medium);
         mPhotoEditor = new PhotoEditor.Builder(this, mPhotoEditorView)
@@ -103,7 +103,7 @@ public class MainActivity extends Activity
 
     private void configZoomLayout()
     {
-        zoomLayout = findViewById(R.id.zoomLayout);
+        zoomLayout = findViewById(R.id.zoom_layout);
         activeZoomLayout();
     }
 
@@ -120,7 +120,7 @@ public class MainActivity extends Activity
 
     private void configureCheckButton()
     {
-        ImageButton imgButton = findViewById(R.id.checkBtn);
+        ImageButton imgButton = findViewById(R.id.check_btn);
         imgButton.setOnClickListener(e -> onCheckBtnClick());
     }
 

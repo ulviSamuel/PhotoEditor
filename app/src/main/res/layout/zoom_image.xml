@@ -7,13 +7,13 @@
     tools:context=".MainActivity">
 
     <ImageButton
-        android:id="@+id/zoomBtn"
+        android:id="@+id/zoom_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/zoom"
         android:src="@drawable/zoom_icon24"
-        app:layout_constraintBottom_toTopOf="@+id/pencilBtn"
+        app:layout_constraintBottom_toTopOf="@+id/pencil_btn"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
         app:layout_constraintHorizontal_bias="0.5"
@@ -22,77 +22,77 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/pencilBtn"
+        android:id="@+id/pencil_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/pencil"
         android:src="@drawable/pencil_icon24"
-        app:layout_constraintBottom_toTopOf="@+id/eraserBtn"
+        app:layout_constraintBottom_toTopOf="@+id/eraser_btn"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zoomBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/zoom_btn" />
 
     <ImageButton
-        android:id="@+id/eraserBtn"
+        android:id="@+id/eraser_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/eraser"
         android:src="@drawable/eraser_icon24"
-        app:layout_constraintBottom_toTopOf="@+id/insTextBtn"
+        app:layout_constraintBottom_toTopOf="@+id/ins_text_btn"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pencilBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/pencil_btn" />
 
     <ImageButton
-        android:id="@+id/insTextBtn"
+        android:id="@+id/ins_text_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/textIns"
         android:src="@drawable/text_ins_icon16"
-        app:layout_constraintBottom_toTopOf="@+id/undoBtn"
+        app:layout_constraintBottom_toTopOf="@+id/undo_btn"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eraserBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/eraser_btn" />
 
     <ImageButton
-        android:id="@+id/undoBtn"
+        android:id="@+id/undo_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/undo"
         android:src="@drawable/undo_icon"
-        app:layout_constraintBottom_toTopOf="@+id/redoBtn"
+        app:layout_constraintBottom_toTopOf="@+id/redo_btn"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insTextBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/ins_text_btn" />
 
     <ImageButton
-        android:id="@+id/redoBtn"
+        android:id="@+id/redo_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/redo"
         android:src="@drawable/redo_icon"
-        app:layout_constraintBottom_toTopOf="@+id/deleteBtn"
+        app:layout_constraintBottom_toTopOf="@+id/delete_btn"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/undoBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/undo_btn" />
 
     <ImageButton
-        android:id="@+id/deleteBtn"
+        android:id="@+id/delete_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
@@ -103,10 +103,10 @@
         app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/redoBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/redo_btn" />
 
     <com.otaliastudios.zoom.ZoomLayout
-        android:id="@+id/zoomLayout"
+        android:id="@+id/zoom_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbars="vertical|horizontal"
@@ -142,7 +142,7 @@
             android:layout_height="match_parent">
 
             <ja.burhanrashid52.photoeditor.PhotoEditorView
-                android:id="@+id/photoEditorView"
+                android:id="@+id/photo_editor_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -172,7 +172,7 @@
         app:layout_constraintGuide_percent="0.98" />
 
     <ImageButton
-        android:id="@+id/checkBtn"
+        android:id="@+id/check_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
