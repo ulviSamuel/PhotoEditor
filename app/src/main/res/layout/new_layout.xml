@@ -16,7 +16,7 @@
         app:flingEnabled="true"
         app:hasClickableChildren="true"
         app:horizontalPanEnabled="false"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_guideline"
+        app:layout_constraintBottom_toTopOf="@+id/design_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="89dp" />
+        app:layout_constraintGuide_percent="0.90" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/start_guideline"
@@ -93,12 +93,10 @@
         android:background="@color/transparent"
         android:src="@drawable/undo_icon"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/redoBtn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/design_bar"
-        app:layout_constraintStart_toStartOf="@+id/start_guideline"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+        app:layout_constraintStart_toStartOf="@+id/design_bar"
+        app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
         android:id="@+id/redoBtn"
@@ -107,11 +105,10 @@
         android:background="@color/transparent"
         android:src="@drawable/redo_icon"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/zoomBtn"
+        app:layout_constraintEnd_toStartOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/undoBtn"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+        app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
         android:id="@+id/zoomBtn"
@@ -120,64 +117,70 @@
         android:background="@color/transparent"
         android:src="@drawable/zoom_icon"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/pencilBtn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/redoBtn"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
         android:id="@+id/pencilBtn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
-        android:src="@drawable/pencil_icon"
+        android:src="@drawable/pencil_icon24"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/eraserBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/zoomBtn"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+        app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
         android:id="@+id/eraserBtn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
-        android:src="@drawable/eraser_icon"
+        android:src="@drawable/eraser_icon24"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/insTextBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/pencilBtn"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+        app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
         android:id="@+id/insTextBtn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
-        android:src="@drawable/text_ins_icon"
+        android:src="@drawable/text_ins_icon16"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/deleteBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/eraserBtn"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+        app:layout_constraintTop_toTopOf="@+id/design_bar" />
 
     <ImageButton
         android:id="@+id/deleteBtn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/transparent"
-        android:src="@drawable/bin_icon"
+        android:src="@drawable/bin_icon24"
         app:layout_constraintBottom_toBottomOf="@+id/design_bar"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+        app:layout_constraintEnd_toEndOf="@+id/design_bar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/insTextBtn"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
+        app:layout_constraintTop_toTopOf="@+id/design_bar" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/design_bar"
+        app:layout_constraintEnd_toStartOf="@+id/zoomBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/redoBtn"
+        app:layout_constraintTop_toTopOf="@+id/design_bar"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
