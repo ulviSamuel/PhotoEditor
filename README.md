@@ -90,4 +90,4 @@ The repository records a completed academic prototype with a single activity and
 
 ## License
 
-No license file or explicit license declaration is included in the repository.
+This project is shared for educational and portfolio purposes. All rights reserved unless otherwise stated.
